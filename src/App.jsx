@@ -6,7 +6,7 @@ function App() {
   const [data, setData] = useState([]); // создаем массив где будут храниться данные
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [updateItem, setUpdateItem] = useState({});
+ 
 
 
 
@@ -41,7 +41,7 @@ function App() {
 
   const updateData = async (id, newItem) => {
     try {
-      const response = await axios.put(`https://jsonplaceholder.typicode.com/todos/${id}`, updateItem)
+      const response = await axios.put(`https://jsonplaceholder.typicode.com/todos/${id}`, newItem)
       setData(data.map(item => (item.id === id ? response.data : item)))
     }
     catch (err) {
@@ -69,7 +69,7 @@ function App() {
           <span>{item.title}</span>
           <span>{item.body}</span>
           <button onClick={() => deleteData(item.id)}>удалить</button>
-           <button onClick={() => deleteData(item.id)}>удалить</button>
+           <button onClick={() => deleteData(item.id)}>Обновить</button>
         </div>
       ))}
 
